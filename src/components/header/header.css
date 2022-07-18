@@ -1,0 +1,22 @@
+.head{
+    background: black;
+    color: white;
+    height: 100px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-inline: 30px;
+}
+
+
+.title{
+    font-size: 30px;
+}
+
+
+.baskets{
+    font-size: 20px;
+    padding-right: 30px;
+}

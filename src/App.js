@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import Header from "./components/header/header";
+import "./styles/App.css";
+import {setProducts} from "./redux/action-creators";
+import {ProductList} from "./components/productList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const {wishList, cart, products} = useSelector(({wishList: {wishList}, cart: {cart}, products: {products}}) => ({wishList, cart, products}));
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setProducts());
+    }, [dispatch]);
+
+    return (
+        <div>
+            {products.length}
+            <Header/>
+            <ProductList products={products}/>
+        </div>
+    );
 }
 
 export default App;
